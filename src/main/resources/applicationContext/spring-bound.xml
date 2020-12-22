@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="f1_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="100"></property>
+        <property name="lowerBound" value="-100"></property>
+    </bean>
+    <bean id="f2_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="10"></property>
+        <property name="lowerBound" value="-10"></property>
+    </bean>
+    <bean id="f3_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="100"></property>
+        <property name="lowerBound" value="-100"></property>
+    </bean>
+    <bean id="f4_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="100"></property>
+        <property name="lowerBound" value="-100"></property>
+    </bean>
+    <bean id="f5_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="30"></property>
+        <property name="lowerBound" value="-30"></property>
+    </bean>
+    <bean id="f6_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="100"></property>
+        <property name="lowerBound" value="-100"></property>
+    </bean>
+    <bean id="f7_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="1.28"></property>
+        <property name="lowerBound" value="-1.28"></property>
+    </bean>
+    <bean id="f8_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="500"></property>
+        <property name="lowerBound" value="-500"></property>
+    </bean>
+    <bean id="f9_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="5.12"></property>
+        <property name="lowerBound" value="-5.12"></property>
+    </bean>
+    <bean id="f10_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="32"></property>
+        <property name="lowerBound" value="-32"></property>
+    </bean>
+    <bean id="f11_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="600"></property>
+        <property name="lowerBound" value="-600"></property>
+    </bean>
+    <bean id="f12_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="50"></property>
+        <property name="lowerBound" value="-50"></property>
+    </bean>
+    <bean id="f13_bound" class="com.vsen.benchmark.Bound">
+        <property name="upperBound" value="50"></property>
+        <property name="lowerBound" value="-50"></property>
+    </bean>
+
+</beans>
