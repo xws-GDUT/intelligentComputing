@@ -3,6 +3,7 @@ import com.vsen.benchmark.Evaluator;
 import com.vsen.pojo.Individual;
 import com.vsen.service.BestService;
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,12 +18,19 @@ import java.util.stream.Collectors;
  * Created by wansenxu@163.com on 2020/12/11
  */
 public class TestStrategyForF11 {
+    ApplicationContext applicationContext;
+    Evaluator evaluator;
+    BestService bestService;
+    @BeforeEach
+    public void init(){
+        applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        evaluator = (Evaluator) applicationContext.getBean("f11");
+        bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+    }
     @Test
     public void rand_1_bin(){
         String strategy = "rand-1-bin";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 
@@ -56,9 +64,7 @@ public class TestStrategyForF11 {
     @Test
     public void rand_2_bin(){
         String strategy = "rand-2-bin";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 
@@ -92,9 +98,7 @@ public class TestStrategyForF11 {
     @Test
     public void rand_1_exp(){
         String strategy = "rand-1-exp";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 
@@ -128,9 +132,7 @@ public class TestStrategyForF11 {
     @Test
     public void rand_2_exp(){
         String strategy = "rand-2-exp";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 
@@ -164,9 +166,7 @@ public class TestStrategyForF11 {
     @Test
     public void best_1_bin(){
         String strategy = "best-1-bin";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 
@@ -200,9 +200,7 @@ public class TestStrategyForF11 {
     @Test
     public void best_2_bin(){
         String strategy = "best-2-bin";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 
@@ -236,9 +234,7 @@ public class TestStrategyForF11 {
     @Test
     public void best_1_exp(){
         String strategy = "best-1-exp";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean("best-1-exp");
         try {
 
@@ -272,9 +268,7 @@ public class TestStrategyForF11 {
     @Test
     public void best_2_exp(){
         String strategy = "best-2-exp";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean("best-2-exp");
         try {
 
@@ -308,9 +302,7 @@ public class TestStrategyForF11 {
     @Test
     public void randToBest_1_bin(){
         String strategy = "randToBest-1-bin";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean("randToBest-1-bin");
         try {
 
@@ -344,9 +336,7 @@ public class TestStrategyForF11 {
     @Test
     public void randToBest_1_exp(){
         String strategy = "randToBest-1-exp";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f11");
-        BestService bestService = (BestService) applicationContext.getBean("bestServiceImpl");
+
         Optimizer optimizer = (Optimizer) applicationContext.getBean("randToBest-1-exp");
         try {
 
