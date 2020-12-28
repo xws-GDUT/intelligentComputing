@@ -2,6 +2,7 @@ import com.vsen.algorithm.Optimizer;
 import com.vsen.benchmark.Evaluator;
 import com.vsen.pojo.Individual;
 import com.vsen.service.BestService;
+import com.vsen.util.OperateUtils;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,14 +42,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -75,14 +72,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -109,14 +102,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -143,14 +132,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -177,14 +162,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -211,14 +192,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -245,14 +222,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -279,14 +252,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -313,14 +282,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
@@ -346,14 +311,10 @@ public class TestStrategyForF12 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
+                sum = OperateUtils.plus(sum,fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
-            for (int i = 0; i < 3000; i++) {
-                sum.set(i,sum.get(i)/30.0);
-            }
+            sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
