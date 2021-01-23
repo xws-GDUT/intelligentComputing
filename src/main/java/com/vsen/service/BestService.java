@@ -2,7 +2,6 @@ package com.vsen.service;
 
 public interface BestService {
     Boolean updateF1(String strategy,double fitness);
-
     Boolean updateF2(String strategy, double fitness);
     Boolean updateF3(String strategy, double fitness);
     Boolean updateF4(String strategy, double fitness);

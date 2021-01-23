@@ -34,7 +34,11 @@ public class TestSGA {
     }
     @Test
     public void test(){
-
+        String str="QJPRJGoo4BImVTzkrXhkjN1/s/moc.udiab.nap";
+        char[] chars = str.toCharArray();
+        for (int i = chars.length-1; i >= 0; i--) {
+            System.out.print(chars[i]);
+        }
     }
 
 

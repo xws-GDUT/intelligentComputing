@@ -29,41 +29,41 @@ public class TestStrategyForF1 {
        bestService = (BestService) applicationContext.getBean("bestServiceImpl");
 
     }
-    @Test
-    public void sga(){
-        String strategy = "sga";
-        Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-
-        try {
-            List<Double> sum = new ArrayList<>();
-            for (int i = 0; i < 3000; i++) {
-                sum.add(0.0);
-            }
-            for (int i = 0; i < 30; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                for (int j = 0; j < sum.size(); j++) {
-                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
-                }
-                System.out.println(fitnessPerGeneration);
-            }
-            List<Double> convergence = sum.stream().map(x -> x / 30).collect(Collectors.toList());
-            System.out.println(convergence);
+//    @Test
+//    public void sga(){
+//        String strategy = "sga";
+//        Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
+//
+//        try {
+//            List<Double> sum = new ArrayList<>();
 //            for (int i = 0; i < 3000; i++) {
-//                sum.set(i,sum.get(i)/30.0);
+//                sum.add(0.0);
 //            }
-//            System.out.println(sum);
-            StringBuilder str = new StringBuilder();
-            for (int i = 0; i < convergence.size(); i++) {
-                str.append((i+1)+"\t"+convergence.get(i)+"\n");
-            }
-            Double fitness = convergence.stream().min(Double::compareTo).get();
-            bestService.updateF1(strategy,fitness);
-            FileUtils.write(new File("convergence/sga/f1.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
-            e.printStackTrace();
-        }
-    }
+//            for (int i = 0; i < 30; i++) {
+//                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+//                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+//                for (int j = 0; j < sum.size(); j++) {
+//                    sum.set(j,sum.get(j)+fitnessPerGeneration.get(j));
+//                }
+//                System.out.println(fitnessPerGeneration);
+//            }
+//            List<Double> convergence = sum.stream().map(x -> x / 30).collect(Collectors.toList());
+//            System.out.println(convergence);
+////            for (int i = 0; i < 3000; i++) {
+////                sum.set(i,sum.get(i)/30.0);
+////            }
+////            System.out.println(sum);
+//            StringBuilder str = new StringBuilder();
+//            for (int i = 0; i < convergence.size(); i++) {
+//                str.append((i+1)+"\t"+convergence.get(i)+"\n");
+//            }
+//            Double fitness = convergence.stream().min(Double::compareTo).get();
+//            bestService.updateF1(strategy,fitness);
+//            FileUtils.write(new File("convergence/sga/f1.txt"),str,"UTF-8",false);
+//        } catch (CloneNotSupportedException | IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
     @Test
     public void rand_1_bin(){
         String strategy = "rand-1-bin";
