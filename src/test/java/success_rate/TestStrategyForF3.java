@@ -44,7 +44,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -104,7 +104,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -124,7 +124,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -144,7 +144,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -164,7 +164,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -184,7 +184,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -204,7 +204,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -224,7 +224,7 @@ public class TestStrategyForF3 {
                 }
                 System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
             }
-            successRateService.updateF3(strategy,successCount);
+            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

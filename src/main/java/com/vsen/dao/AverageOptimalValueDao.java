@@ -6,20 +6,21 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import java.sql.SQLException;
 
-@Repository("successRateDao")
-public class SuccessRateDao {
+@Repository("averageOptimalValueDao")
+public class AverageOptimalValueDao {
     @Resource(name = "dbUtils")
     DBUtils dbUtils;
 
-    public Boolean updateSuccessRate(String strategy, int successCount, String targetFunction) {
-        String sql = "UPDATE success_rate " +
+    public Boolean updateAverageOptimalValue(String strategy,double fitness,String targetFunction) {
+        String sql = "UPDATE average_optimal_value " +
                 "SET "+targetFunction+"=? where strategy = ? ";
         Boolean result = false;
         try {
-            result = dbUtils.executeUpdate(sql,String.valueOf(successCount),strategy);
+            result = dbUtils.executeUpdate(sql,String.valueOf(fitness),strategy);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return result;
     }
+
 }
