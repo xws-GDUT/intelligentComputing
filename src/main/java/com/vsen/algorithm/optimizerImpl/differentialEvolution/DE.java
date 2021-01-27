@@ -24,30 +24,41 @@ public class DE implements Optimizer {
     private final double rateOfCrossover=0.9;
     private final double F=0.5;
     private final double LAMBADA=0.5;
-    //实验参数（仅在存在于实验条件）
+    //实验参数（仅存在于实验条件）
     private final int evolutionCount =3000;  //进化次数
 
+    /**
+     * 通过给定的评价目标（evaluator），随机生成一个组解（即种群pop）依据该评价目标不断进行优化最终得到最优解
+     * @param evaluator
+     * @return
+     * @throws CloneNotSupportedException
+     */
     @Override
     public List<Individual> optimize(Evaluator evaluator) throws CloneNotSupportedException {
         List<Individual> bestPerGeneration=new ArrayList<>();
         List<Individual> pop=initPop(POPSIZE,evaluator.getBound(),DIMENSION);
+        evaluate(pop,evaluator);
         for (int k = 0; k < evolutionCount; k++) {
-            for (Individual individual : pop) {
-                individual.setFitness(evaluator.evaluate(individual.getSolution()));
-            }
+            //差分变异
             List<Individual> mutatedPop = mutate(pop,evaluator.getBound());
+            //交叉
             List<Individual> offspring = crossover(pop, mutatedPop);
-            for (Individual individual : offspring) {
-                individual.setFitness(evaluator.evaluate(individual.getSolution()));
-            }
-            pop=select(pop, offspring);
-            Individual bestIndividual = Collections.min(pop);
-            bestPerGeneration.add(bestIndividual);
+            evaluate(offspring,evaluator);
+            //从pop和offspring种群中选择最优个体作为下一代种群的个体
+            pop=selectOptimalIndividual(pop, offspring);
+            //记录每一代的最优个体，观察该算法的收敛趋势
+            bestPerGeneration.add(Collections.min(pop));
         }
         return bestPerGeneration;
     }
 
-    public List<Individual> select(List<Individual> pop, List<Individual> offspring) {
+    private void evaluate(List<Individual> pop,Evaluator evaluator){
+        for (Individual individual : pop) {
+            individual.setFitness(evaluator.evaluate(individual.getSolution()));
+        }
+    }
+
+    public List<Individual> selectOptimalIndividual(List<Individual> pop, List<Individual> offspring) {
         List<Individual> nextPop=new ArrayList<>();
         for (int i=0;i<pop.size();i++){
             if(pop.get(i).getFitness()>offspring.get(i).getFitness()){
