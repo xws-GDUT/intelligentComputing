@@ -34,7 +34,7 @@ public class DE implements Optimizer {
      * @throws CloneNotSupportedException
      */
     @Override
-    public List<Individual> optimize(Evaluator evaluator) throws CloneNotSupportedException {
+    public List<Individual> optimize(Evaluator evaluator){
         List<Individual> bestPerGeneration=new ArrayList<>();
         List<Individual> pop=initPop(POPSIZE,evaluator.getBound(),DIMENSION);
         evaluate(pop,evaluator);
@@ -205,9 +205,15 @@ public class DE implements Optimizer {
             }
         return mutatedPop;
     }
-    private List<Individual> best_1(List<Individual> pop,Bound bound) throws CloneNotSupportedException {
+    private List<Individual> best_1(List<Individual> pop,Bound bound) {
         List<Individual> mutatedPop = new ArrayList<Individual>();
-        Individual bestIndividual = (Individual) pop.stream().min(Individual::compareTo).get().clone();
+//        Individual bestIndividual = (Individual) pop.stream().min(Individual::compareTo).get().clone();
+        Individual bestIndividual = null;
+        try {
+            bestIndividual = (Individual) Collections.min(pop).clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < pop.size(); i++) {
             Individual individual = new Individual();
             List<Double> solution = new ArrayList<Double>();
@@ -229,9 +235,20 @@ public class DE implements Optimizer {
         }
         return mutatedPop;
     }
-    private List<Individual> best_2(List<Individual> pop,Bound bound) throws CloneNotSupportedException {
+    private List<Individual> best_2(List<Individual> pop,Bound bound){
         List<Individual> mutatedPop = new ArrayList<Individual>();
-        Individual bestIndividual = (Individual) pop.stream().min(Individual::compareTo).get().clone();
+//        Individual bestIndividual = (Individual) pop.stream().min(Individual::compareTo).get().clone();
+        Individual bestIndividual = null;
+        try {
+            bestIndividual = (Individual) Collections.min(pop).clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        try {
+            bestIndividual = (Individual) Collections.min(pop).clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < pop.size(); i++) {
             Individual individual = new Individual();
             List<Double> solution = new ArrayList<Double>();
@@ -258,18 +275,15 @@ public class DE implements Optimizer {
         }
         return mutatedPop;
     }
-    private List<Individual> randToBest_1(List<Individual> pop,Bound bound) throws CloneNotSupportedException {
+    private List<Individual> randToBest_1(List<Individual> pop,Bound bound){
         List<Individual> mutatedPop = new ArrayList<Individual>();
-//        Individual bestIndividual = (Individual) pop.stream()
-//                .min((x, y) -> {
-//                    if(x.getFitness()==y.getFitness()){
-//                        return 0;
-//                    }else {
-//                        return  x.getFitness()<y.getFitness()?-1:1;
-//                    }
-//                })
-//                .get().clone();
-        Individual bestIndividual = (Individual) pop.stream().min(Individual::compareTo).get().clone();
+//        Individual bestIndividual = (Individual) pop.stream().min(Individual::compareTo).get().clone();
+        Individual bestIndividual = null;
+        try {
+            bestIndividual = (Individual) Collections.min(pop).clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < pop.size(); i++) {
             Individual individual = new Individual();
             List<Double> solution = new ArrayList<Double>();
@@ -297,7 +311,7 @@ public class DE implements Optimizer {
         }
         return mutatedPop;
     }
-    public List<Individual> mutate(List<Individual> pop,Bound bound) throws CloneNotSupportedException {
+    public List<Individual> mutate(List<Individual> pop,Bound bound) {
         List<Individual> mutatedPop = null;
         MutateType mutateType = this.mutateType;
         switch (mutateType) {
