@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 /**
  * Created by wansenxu@163.com on 2020/12/7
  */
-@Component("dbUtils")
+@Component("dbUtils")   //DBUtils dbUtils = new DBUtils();
 public class DBUtils {
 
     private String username;

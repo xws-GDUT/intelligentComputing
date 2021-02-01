@@ -22,7 +22,7 @@ public class SGA implements Optimizer {
     private final int evolutionCount =3000;  //进化次数
 
     @Override
-    public List<Individual> optimize(Evaluator evaluator) throws CloneNotSupportedException {
+    public List<Individual> optimize(Evaluator evaluator)  {
         List<Individual> pop = null;
         List<Individual> bestIndividualPerGeneration = new ArrayList<>();
         List<Individual> convergence = new ArrayList<>();
@@ -43,9 +43,13 @@ public class SGA implements Optimizer {
                 individual.setFitness(evaluator.evaluate(individual.getSolution()));
             }
 //            System.out.println("--");
-            bestIndividualPerGeneration.add((Individual) pop.stream().min(Individual::compareTo).get().clone());
+            try {
+                bestIndividualPerGeneration.add((Individual) pop.stream().min(Individual::compareTo).get().clone());
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
 //            if(j%500==0){
-                convergence.add((Individual) bestIndividualPerGeneration.stream().min(Individual::compareTo).get().clone());
+//                convergence.add((Individual) bestIndividualPerGeneration.stream().min(Individual::compareTo).get().clone());
 //            }
         }
         return convergence;

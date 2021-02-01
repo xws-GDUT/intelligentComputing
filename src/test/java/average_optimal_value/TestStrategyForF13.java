@@ -25,15 +25,17 @@ public class TestStrategyForF13 {
     Evaluator evaluator;
     AverageOptimalValueService averageOptimalValueService;
     String targetFunction;
+
     @BeforeEach
-    public void init(){
+    public void init() {
         applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         evaluator = (Evaluator) applicationContext.getBean("f13");
         averageOptimalValueService = (AverageOptimalValueService) applicationContext.getBean("averageOptimalValueServiceImpl");
-        targetFunction="F13";
+        targetFunction = "F13";
     }
+
     @Test
-    public void rand_1_bin(){
+    public void rand_1_bin() {
         String strategy = "rand-1-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
@@ -45,24 +47,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/rand_1_bin/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/rand_1_bin/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void rand_2_bin(){
+    public void rand_2_bin() {
         String strategy = "rand-2-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
@@ -74,24 +77,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/rand_2_bin/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/rand_2_bin/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void rand_1_exp(){
+    public void rand_1_exp() {
         String strategy = "rand-1-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
@@ -103,24 +107,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/rand_1_exp/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/rand_1_exp/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void rand_2_exp(){
+    public void rand_2_exp() {
         String strategy = "rand-2-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
@@ -132,24 +137,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/rand_2_exp/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/rand_2_exp/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void best_1_bin(){
+    public void best_1_bin() {
         String strategy = "best-1-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
@@ -161,24 +167,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/best_1_bin/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/best_1_bin/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void best_2_bin(){
+    public void best_2_bin() {
         String strategy = "best-2-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
@@ -190,24 +197,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/best_2_bin/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/best_2_bin/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void best_1_exp(){
+    public void best_1_exp() {
         String strategy = "best-1-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean("best-1-exp");
         try {
@@ -219,24 +227,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/best_1_exp/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/best_1_exp/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void best_2_exp(){
+    public void best_2_exp() {
         String strategy = "best-2-exp";
 
         Optimizer optimizer = (Optimizer) applicationContext.getBean("best-2-exp");
@@ -249,24 +258,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/best_2_exp/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/best_2_exp/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void randToBest_1_bin(){
+    public void randToBest_1_bin() {
         String strategy = "randToBest-1-bin";
 
         Optimizer optimizer = (Optimizer) applicationContext.getBean("randToBest-1-bin");
@@ -279,24 +289,25 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/randToBest_1_bin/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/randToBest_1_bin/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void randToBest_1_exp(){
+    public void randToBest_1_exp() {
         String strategy = "randToBest-1-exp";
 
         Optimizer optimizer = (Optimizer) applicationContext.getBean("randToBest-1-exp");
@@ -309,19 +320,19 @@ public class TestStrategyForF13 {
             for (int i = 0; i < 30; i++) {
                 List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
                 List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                sum = OperateUtils.plus(sum,fitnessPerGeneration);
+                sum = OperateUtils.plus(sum, fitnessPerGeneration);
                 System.out.println(fitnessPerGeneration);
             }
             sum = sum.stream().map(x -> x / 30).collect(Collectors.toList());
             System.out.println(sum);
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < sum.size(); i++) {
-                str.append((i+1)+"\t"+sum.get(i)+"\n");
+                str.append((i + 1) + "\t" + sum.get(i) + "\n");
             }
             Double fitness = sum.stream().min(Double::compareTo).get();
-            averageOptimalValueService.updateAverageOptimalValue(strategy,fitness,targetFunction);
-            FileUtils.write(new File("convergence/randToBest_1_exp/f13.txt"),str,"UTF-8",false);
-        } catch (CloneNotSupportedException | IOException e) {
+            averageOptimalValueService.updateAverageOptimalValue(strategy, fitness, targetFunction);
+            FileUtils.write(new File("convergence/randToBest_1_exp/f13.txt"), str, "UTF-8", false);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

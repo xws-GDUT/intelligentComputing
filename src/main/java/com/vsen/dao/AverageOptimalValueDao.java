@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import java.sql.SQLException;
 
-@Repository("averageOptimalValueDao")
+@Repository("averageOptimalValueDao")  //AverageOptimalValueDao averageOptimalValueDao= new AverageOptimalValueDao()
 public class AverageOptimalValueDao {
-    @Resource(name = "dbUtils")
+    @Resource(name = "dbUtils")  //dbUtils=dbUtils;
     DBUtils dbUtils;
 
     public Boolean updateAverageOptimalValue(String strategy,double fitness,String targetFunction) {

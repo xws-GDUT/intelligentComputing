@@ -26,7 +26,7 @@ public class TestStrategyForF8 {
         applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         evaluator = (Evaluator) applicationContext.getBean("f8");
         successRateService = (SuccessRateService) applicationContext.getBean("successRateImpl");
-        targetFunction="F8";
+        targetFunction = "F8";
     }
 
     @Test
@@ -34,200 +34,169 @@ public class TestStrategyForF8 {
         int successCount = 0;
         String strategy = "rand-1-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void rand_1_exp() {
         int successCount = 0;
         String strategy = "rand-1-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void best_1_bin() {
         int successCount = 0;
         String strategy = "best-1-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
-    public void best_1_exp() {
+    public void best_1_exp() throws CloneNotSupportedException {
         int successCount = 0;
         String strategy = "best-1-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void rand_2_bin() {
         int successCount = 0;
         String strategy = "rand-2-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void rand_2_exp() {
         int successCount = 0;
         String strategy = "rand-2-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void best_2_bin() {
         int successCount = 0;
         String strategy = "best-2-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void best_2_exp() {
         int successCount = 0;
         String strategy = "best-2-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void randToBest_1_bin() {
         int successCount = 0;
         String strategy = "randToBest-1-bin";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
+
     @Test
     public void randToBest_1_exp() {
         int successCount = 0;
         String strategy = "randToBest-1-exp";
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
-        try {
-            for (int i = 0; i < 100; i++) {
-                List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
-                List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
-                Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
-                if (fitness <= 0.01) {
-                    successCount++;
-                }
-                System.out.println(strategy+"优化"+targetFunction+"执行第" + (i + 1) + "次");
+        for (int i = 0; i < 100; i++) {
+            List<Individual> bestPerGeneration = optimizer.optimize(evaluator);
+            List<Double> fitnessPerGeneration = bestPerGeneration.stream().map(Individual::getFitness).collect(Collectors.toList());
+            Double fitness = fitnessPerGeneration.stream().min(Double::compareTo).get();
+            if (fitness <= 0.01) {
+                successCount++;
             }
-            successRateService.updateSuccessRate(strategy,successCount,targetFunction);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            System.out.println(strategy + "优化" + targetFunction + "执行第" + (i + 1) + "次");
         }
+        successRateService.updateSuccessRate(strategy, successCount, targetFunction);
     }
 
 }
