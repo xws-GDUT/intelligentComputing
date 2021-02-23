@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sga" class="com.vsen.algorithm.optimizerImpl.geneticAlgorithm.SGA">
+    </bean>
+    <bean id="rand-1-bin" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="RAND"></property>
+        <property name="crossoverType" value="BIN"></property>
+        <property name="differentialVectorNo" value="1"></property>
+     </bean>
+    <bean id="rand-2-bin" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="RAND"></property>
+        <property name="crossoverType" value="BIN"></property>
+        <property name="differentialVectorNo" value="2"></property>
+     </bean>
+    <bean id="rand-1-exp" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="RAND"></property>
+        <property name="crossoverType" value="EXP"></property>
+        <property name="differentialVectorNo" value="1"></property>
+     </bean>
+    <bean id="rand-2-exp" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="RAND"></property>
+        <property name="crossoverType" value="EXP"></property>
+        <property name="differentialVectorNo" value="2"></property>
+     </bean>
+    <bean id="best-1-bin" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="BEST"></property>
+        <property name="crossoverType" value="BIN"></property>
+        <property name="differentialVectorNo" value="1"></property>
+     </bean>
+    <bean id="best-2-bin" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="BEST"></property>
+        <property name="crossoverType" value="BIN"></property>
+        <property name="differentialVectorNo" value="2"></property>
+     </bean>
+    <bean id="best-1-exp" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="BEST"></property>
+        <property name="crossoverType" value="EXP"></property>
+        <property name="differentialVectorNo" value="1"></property>
+     </bean>
+    <bean id="best-2-exp" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="BEST"></property>
+        <property name="crossoverType" value="EXP"></property>
+        <property name="differentialVectorNo" value="2"></property>
+     </bean>
+    <bean id="randToBest-1-bin" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="RANDtoBest"></property>
+        <property name="crossoverType" value="BIN"></property>
+        <property name="differentialVectorNo" value="1"></property>
+    </bean>
+    <bean id="randToBest-1-exp" class="com.vsen.algorithm.optimizerImpl.differentialEvolution.DE">
+        <property name="mutateType" value="RANDtoBest"></property>
+        <property name="crossoverType" value="EXP"></property>
+        <property name="differentialVectorNo" value="1"></property>
+    </bean>
+</beans>

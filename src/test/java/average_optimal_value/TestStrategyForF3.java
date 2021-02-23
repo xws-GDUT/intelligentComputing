@@ -97,9 +97,6 @@ public class TestStrategyForF3 {
     @Test
     public void rand_1_exp() {
         String strategy = "rand-1-exp";
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Evaluator evaluator = (Evaluator) applicationContext.getBean("f3");
-        AverageOptimalValueService averageOptimalValueService = (AverageOptimalValueService) applicationContext.getBean("bestServiceImpl");
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 

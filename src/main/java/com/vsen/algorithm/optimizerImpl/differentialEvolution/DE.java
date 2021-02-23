@@ -5,10 +5,7 @@ import com.vsen.benchmark.Bound;
 import com.vsen.benchmark.Evaluator;
 import com.vsen.pojo.Individual;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by wansenxu@163.com on 2020/12/10
@@ -153,26 +150,11 @@ public class DE implements Optimizer {
         for (int i = 0; i < pop.size(); i++) {
             Individual individual =new Individual();
             List<Double> solution = new ArrayList<Double>();
-            //获取三个随机数 s.t. 三个随机数与i两两不等
-            List<Integer> indexes = new ArrayList<>();
-            indexes.add(i);
-            while(indexes.size()<4){
-                Integer index = new Random().nextInt(pop.size());
-                if(!indexes.contains(index)){
-                    indexes.add(index);
-                }
-            }
+            List<Integer> indexes = getRamdonExceptX(pop.size(),3,i);
             for (int j = 0; j < pop.get(0).getSolution().size(); j++) {
-                double value= pop
-                        .get(indexes.get(1))
-                        .getSolution()
-                        .get(j)// bug
-                        + F * (pop.get(indexes.get(2))
-                        .getSolution()
-                        .get(j)// bug
-                        -pop.get(indexes.get(3))
-                        .getSolution()
-                        .get(j));// bug
+                double value= pop.get(indexes.get(0)).getSolution().get(j)
+                        +F
+                        *(pop.get(indexes.get(1)).getSolution().get(j)-pop.get(indexes.get(2)).getSolution().get(j));
                 value=handleOutOfBoundary(value,bound.getLowerBound(),bound.getUpperBound());
                 solution.add(value);
             }
@@ -187,16 +169,9 @@ public class DE implements Optimizer {
             Individual individual = new Individual();
             List<Double> solution = new ArrayList<Double>();
             //获得五个在[0,99]且两两不等的五个数
-            List<Integer> indexes = new ArrayList<>();
-            indexes.add(i);
-            while (indexes.size() <= 6) {
-                Integer index = new Random().nextInt(pop.size());
-                if (!indexes.contains(index)) {
-                    indexes.add(index);
-                }
-            }
+            List<Integer> indexes = getRamdonExceptX(pop.size(),5,i);
             for (int j = 0; j < pop.get(0).getSolution().size(); j++) {
-                double value = pop.get(indexes.get(1)).getSolution().get(j) + F * (pop.get(indexes.get(2)).getSolution().get(j) + pop.get(indexes.get(3)).getSolution().get(j) - pop.get(indexes.get(4)).getSolution().get(j) - pop.get(indexes.get(5)).getSolution().get(j));
+                double value = pop.get(indexes.get(0)).getSolution().get(j) + F * (pop.get(indexes.get(1)).getSolution().get(j) + pop.get(indexes.get(2)).getSolution().get(j) - pop.get(indexes.get(3)).getSolution().get(j) - pop.get(indexes.get(4)).getSolution().get(j));
                 value=handleOutOfBoundary(value,bound.getLowerBound(),bound.getUpperBound());
                 solution.add(value);
             }
@@ -217,16 +192,9 @@ public class DE implements Optimizer {
         for (int i = 0; i < pop.size(); i++) {
             Individual individual = new Individual();
             List<Double> solution = new ArrayList<Double>();
-            List<Integer> indexes = new ArrayList<>();
-            indexes.add(i);
-            while(indexes.size()<=3){
-                Integer index = new Random().nextInt(pop.size());
-                if(!indexes.contains(index)){
-                    indexes.add(index);
-                }
-            }
+            List<Integer> indexes = getRamdonExceptX(pop.size(),2,i);
             for (int j = 0; j < pop.get(0).getSolution().size(); j++) {
-                double value = bestIndividual.getSolution().get(j) + F * (pop.get(indexes.get(1)).getSolution().get(j) - pop.get(indexes.get(2)).getSolution().get(j));
+                double value = bestIndividual.getSolution().get(j) + F * (pop.get(indexes.get(0)).getSolution().get(j) - pop.get(indexes.get(1)).getSolution().get(j));
                 value=handleOutOfBoundary(value,bound.getLowerBound(),bound.getUpperBound());
                 solution.add(value);
             }
@@ -252,21 +220,12 @@ public class DE implements Optimizer {
         for (int i = 0; i < pop.size(); i++) {
             Individual individual = new Individual();
             List<Double> solution = new ArrayList<Double>();
-            List<Integer> indexes = new ArrayList<>();
-            indexes.add(i);
-            while(indexes.size()<=5){
-                Integer index = new Random().nextInt(pop.size());
-                if(!indexes.contains(index)){
-                    indexes.add(index);
-                }
-            }
+            List<Integer> indexes = getRamdonExceptX(pop.size(),4,i);
             for (int j = 0; j < pop.get(0).getSolution().size(); j++) {
-                double value =
-                        bestIndividual.getSolution().get(j)
-                        +F*(
-                            pop.get(indexes.get(1)).getSolution().get(j)+pop.get(indexes.get(2)).getSolution().get(j)
-                            -pop.get(indexes.get(3)).getSolution().get(j)- pop.get(indexes.get(4)).getSolution().get(j)
-                        );
+                double value = bestIndividual.getSolution().get(j)+F
+                        *(pop.get(indexes.get(0)).getSolution().get(j)+pop.get(indexes.get(1)).getSolution().get(j)
+                        -pop.get(indexes.get(2)).getSolution().get(j)- pop.get(indexes.get(3)).getSolution().get(j));
+
                 value=handleOutOfBoundary(value,bound.getLowerBound(),bound.getUpperBound());
                 solution.add(value);
             }
@@ -287,21 +246,13 @@ public class DE implements Optimizer {
         for (int i = 0; i < pop.size(); i++) {
             Individual individual = new Individual();
             List<Double> solution = new ArrayList<Double>();
-            List<Integer> indexes = new ArrayList<>();
-            indexes.add(i);
-            while(indexes.size()<=3){
-                Integer index = new Random().nextInt(pop.size());
-                if(!indexes.contains(index)){
-                    indexes.add(index);
-                }
-            }
-
+            List<Integer> indexes = getRamdonExceptX(pop.size(),2,i);
             for (int j = 0; j < pop.get(0).getSolution().size(); j++) {
                 double value = pop.get(i).getSolution().get(j)
                         +LAMBADA*(bestIndividual.getSolution().get(j)
                         -pop.get(i).getSolution().get(j))
-                        +F * (pop.get(indexes.get(1)).getSolution().get(j)
-                        - pop.get(indexes.get(2)).getSolution().get(j));
+                        +F * (pop.get(indexes.get(0)).getSolution().get(j)
+                        - pop.get(indexes.get(1)).getSolution().get(j));
                 value=handleOutOfBoundary(value,bound.getLowerBound(),bound.getUpperBound());
                 solution.add(value);
             }
@@ -357,6 +308,25 @@ public class DE implements Optimizer {
         }
         individual.setSolution(solution);
         return individual;
+    }
+    public List<Integer> getRamdon(int bound,int amount){
+        List list = new ArrayList();
+        while(list.size()<amount){
+            list.add(new Random().nextInt(bound));
+        }
+        return list;
+    }
+    public List<Integer> getRamdonExceptX(int bound,int amount,int excluded){
+        List list = getRamdon(bound,amount);
+        if(list.contains(excluded)){
+            list.remove(Integer.valueOf(excluded));
+            int number = -1;
+            do{
+                number = new Random().nextInt(100);
+            }while(number != excluded) ;
+            list.add(number);
+        }
+        return  list;
     }
 
     public MutateType getMutateType() {

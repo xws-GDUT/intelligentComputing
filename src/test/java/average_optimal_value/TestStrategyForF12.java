@@ -37,7 +37,6 @@ public class TestStrategyForF12 {
     @Test
     public void rand_1_bin() {
         String strategy = "rand-1-bin";
-
         Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
         try {
 
