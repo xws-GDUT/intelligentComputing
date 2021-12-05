@@ -70,6 +70,11 @@ public class TestStrategyForF1 {
 //            e.printStackTrace();
 //        }
 //    }
+    @Test void test(){
+        String strategy = "rand-1-bin";
+        Optimizer optimizer = (Optimizer) applicationContext.getBean(strategy);
+        optimizer.optimize(evaluator);
+    }
     @Test
     public void rand_1_bin() {
         String strategy = "rand-1-bin";
